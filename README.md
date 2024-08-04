@@ -2,9 +2,9 @@
 
 ## 1. Mathematical operations
 openscad/math/
-* common.scad : Common constants, functions
+* math_constants.scad : Math constants to include
 * linear_algebra.scad : Linear Algebra functions for matrices, angles
-* numscad.scad : Support functions from Pyhton numpy in OpenSCAD
+* numscad.scad : Support functions from Python numpy in OpenSCAD
 * dft.scad : Calculate DFT for real input using matrix multiplication
 * triangles.scad : Create a triangle shape marker module object
 
@@ -14,4 +14,5 @@ openscad/math/python/
 
 ## 2. Shapes
 openscad/shapes
+* shape_constants.scad : Shape constants to include
 * triangles.scad : Create a triangle shape marker

@@ -63,7 +63,7 @@ function num_linspace(start, stop, N) =
 
 //------------------------------------------------------------------------------
 // Vector operation
-// . use list comprehension to determin a vector result per vector element
+// . use list comprehension to determine a vector result per vector element
 //   operation
 // . use recursion to determine single value result for a vector operation
 //------------------------------------------------------------------------------
