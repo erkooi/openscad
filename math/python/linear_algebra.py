@@ -110,6 +110,21 @@ def fAngleXY(p):
         return np.degrees(np.arctan2(y, x))
 
 
+def fAngleArrYZ(angleArr):
+    """Roll angles from y to z around x-axis."""
+    return np.array([fAngleYZ(x) for x in angleArr])
+
+
+def fAngleArrZX(angleArr):
+    """Pitch angles from z to x around y-axis."""
+    return np.array([fAngleZX(x) for x in angleArr])
+
+
+def fAngleArrXY(angleArr):
+    """Jaw angles from x to y around z-axis."""
+    return np.array([fAngleXY(x) for x in angleArr])
+
+
 def fAngleXR(p):
     """Angle from x to r around origin."""
     x = p[0]
@@ -137,8 +152,28 @@ def fAngleZR(p):
     return np.degrees(np.arctan2(r, z))
 
 
+def fAngleArrXR(angleArr):
+    """Angles from x to r around x-axis."""
+    return np.array([fAngleXR(x) for x in angleArr])
+
+
+def fAngleArrYR(angleArr):
+    """Angles from y to r around y-axis."""
+    return np.array([fAngleYR(x) for x in angleArr])
+
+
+def fAngleArrZR(angleArr):
+    """Angles from z to r around z-axis."""
+    return np.array([fAngleZR(x) for x in angleArr])
+
+
 def toAngle360(angle):
-    """Map angle to range [0,360> degrees."""
+    """Map angle to range [0, 360> degrees."""
+    # Check input nan, to avoid RuntimeWarning: invalid value encountered in
+    # double_scalars with nan % 360, that can occur with toAngleArr360() in
+    # jupyter notebook.
+    if np.isnan(angle):
+        return np.nan
     a = angle % 360
     if a < 0:
         return a + 360
@@ -153,6 +188,16 @@ def toAngle180(angle):
         return a - 360
     else:
         return a
+
+
+def toAngleArr360(angleArr):
+    """Map array of angles to range [0, 360> degrees."""
+    return np.array([toAngle360(x) for x in angleArr])
+
+
+def toAngleArr180(angleArr):
+    """Map array of angles to range <-180, 180] degrees."""
+    return np.array([toAngle180(x) for x in angleArr])
 
 
 if __name__ == '__main__':
