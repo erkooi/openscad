@@ -75,6 +75,16 @@ function num_sum(x_arr) =
              x_arr[N-1] + num_sum(num_slice(x_arr, 0, N-2));
 
 
+// Return vector in flipped order
+function num_flip(x_arr) =
+    let (N = len(x_arr),
+         n_arr = num_range(0, 1, N-1)
+        )
+    (len(y_arr) == N)
+         ? [ for (n = n_arr) x_arr[N - 1 - n] ]
+         : false;  // cannot add different length vectors
+
+
 // Return addition of two vectors
 function num_add_vectors(x_arr, y_arr) =
     let (N = len(x_arr),
@@ -268,14 +278,15 @@ assert (empty_sum == 0, "Wrong empty_sum");
 assert (n_sum == 55, "Wrong n_sum");
 
 //------------------------------------------------------------------------------
-// Test add_vectors(), add_vector_skalar()
+// Test flip(), add_vectors(), add_vector_skalar()
 //------------------------------------------------------------------------------
 x_arr = [0, 1, 2, 3];
 y_arr = [4, 5, 6, 7];
 e_arr = [3, 2];
 
 echo();
-echo(">>> Test add_vectors(), add_vector_skalar()");
+echo(">>> Test flip(), add_vectors(), add_vector_skalar()");
+assert (num_flip(x_arr) == [3, 2, 1, 0], "Wrong flip vector");
 assert (num_add_vector_skalar(x_arr, 1) == [1, 2, 3, 4], "Wrong add vector + skalar");
 assert (num_add_vectors(x_arr, y_arr) == [4, 6, 8, 10], "Wrong add two vectors");
 assert (num_add_vectors(x_arr, e_arr) == false, "Wrong add two vectors");
