@@ -182,6 +182,7 @@ echo("fAngleYZ([0, 0,-1, 0]) = ", fAngleYZ([0, 0,-1, 0]));
 echo();
 echo("toAngle360():");
 echo("   0 = ", toAngle360(   0));
+echo("   0 = ", toAngle360(  -0));
 echo(" -90 = ", toAngle360( -90));
 echo("-180 = ", toAngle360(-180));
 echo("-270 = ", toAngle360(-270));
